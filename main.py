@@ -33,6 +33,8 @@ def validate_date(day, month, year):
     # check if the input is a valid date
     if not day.isdigit() or not month.isdigit() or not year.isdigit():
         return False
+    elif (day[0] != "0" and int(day) < 10) or (month[0] != "0" and int(month) < 10):
+        return False
     elif int(year) < 1900:  # check if the year is valid
         return False
     try:
@@ -63,9 +65,9 @@ def add():
     # add the date to the database
     else:
         db[name_date] = {}
-        db[name_date]["day"] = int(day)
-        db[name_date]["month"] = int(month)
-        db[name_date]["year"] = int(year)
+        db[name_date]["day"] = day
+        db[name_date]["month"] = month
+        db[name_date]["year"] = year
         writeDB(db)
 
         # print a success message
