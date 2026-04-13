@@ -1,2 +1,4 @@
 click
 rich
+notify2
+dbus-python
