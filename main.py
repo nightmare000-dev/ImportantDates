@@ -68,6 +68,42 @@ def add():
         db[name_date]["year"] = int(year)
         writeDB(db)
 
+        # print a success message
+        cls.print(
+            f"[bold green]Date added:[/] {name_date} ({db[name_date]['day']}.{db[name_date]['month']}.{db[name_date]['year']})"
+        )
+
+
+# list all dates
+@cli.command()
+def list():
+    db = readDB()
+    iteration = 1
+    print()
+    # print each date
+    for name_date in db:
+        cls.print(
+            f"[bold cyan]{iteration}. {name_date}:[/] [italic yellow]{db[name_date]['day']}.{db[name_date]['month']}.{db[name_date]['year']}[/]"
+        )
+        iteration += 1
+
+
+# delete a date
+@cli.command()
+def delete():
+    db = readDB()
+    # prompt the user for the name of the date to delete
+    prompt_delete = cls.input(
+        "[bold red]\nType the name of a date to delete: [/]"
+    ).strip()
+
+    # find the date and delete it
+    if prompt_delete in db:
+        del db[prompt_delete]
+        writeDB(db)
+    else:
+        cls.print(f'[bold red]There is no date called"{prompt_delete}"[/]')
+
 
 if __name__ == "__main__":
     cli()
