@@ -3,8 +3,6 @@
 import datetime
 import json
 import os
-import re
-from posix import read
 
 import click
 from rich.console import Console
