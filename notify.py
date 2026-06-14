@@ -2,6 +2,7 @@
 import datetime
 import os
 import notify2
+import sys
 
 # 1. Находим абсолютный путь к папке, где лежит сам notify.py
 script_dir = os.path.dirname(os.path.abspath(__file__))
