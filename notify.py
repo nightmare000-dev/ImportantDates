@@ -2,6 +2,16 @@
 import datetime
 import os
 import notify2
+
+# 1. Находим абсолютный путь к папке, где лежит сам notify.py
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# 2. Регистрируем эту папку в Python, чтобы он видел main.py
+sys.path.insert(0, script_dir)
+
+# 3. Делаем эту папку рабочей, чтобы относительные пути к файлам БД тоже не ломались
+os.chdir(script_dir)
+
 from main import readDB
 
 # Важно для работы уведомлений из автозапуска Ubuntu
